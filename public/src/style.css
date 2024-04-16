@@ -58,6 +58,7 @@ h1 {
   transform: skew(-10deg) translateY(8px);
   box-shadow: 0 0 0 var(--😀😀😀);
 }
+
 #resume{
   z-index: 10;
   position: absolute;
@@ -118,5 +119,4 @@ z-index: 0;
 #progress{
  left: 40%;
 }
-
 
