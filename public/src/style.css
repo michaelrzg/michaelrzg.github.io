@@ -62,7 +62,7 @@ h1 {
 #resume{
   z-index: 10;
   position: absolute;
-  bottom: 15%;
+  bottom: 17%;
   left:1%;
   display: none;
 }
@@ -70,7 +70,7 @@ h1 {
 
   z-index: 10;
   position: absolute;
-  bottom: 20%;
+  bottom: 23%;
   left:1%;
   display: none;
 }
@@ -78,7 +78,7 @@ h1 {
 
   z-index: 10;
   position: absolute;
-  bottom: 25%;
+  bottom: 29%;
   left:1%;
   display: none;
 }
@@ -86,7 +86,7 @@ h1 {
 
   z-index: 10;
   position: absolute;
-  bottom: 10%;
+  bottom: 11%;
   left:1%;
   display: none;
 }
@@ -94,7 +94,7 @@ h1 {
   
   z-index: 10;
   position: absolute;
-  bottom: 10%;
+  bottom: 11%;
   left:90%;
   display: none;
 }
