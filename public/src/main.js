@@ -15,7 +15,7 @@ THREE.DefaultLoadingManager.onProgress = function (url, itemsLoaded, itemsTotal)
  percent = (itemsLoaded / itemsTotal)*100
  percent = parseInt(percent)
  strper = percent.toString();
- document.getElementById("progress").innerHTML =strper
+ document.getElementById("progress").innerHTML =strper +"%"
 }
 THREE.DefaultLoadingManager.onLoad = function (){
   stopLoading();

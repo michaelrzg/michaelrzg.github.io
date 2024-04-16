@@ -22,7 +22,13 @@ h1 {
   left: 45%;
   color: white;
 }
+.loader{
+top: 40%;
 
+}
+#progress{
+  
+}
 
 .button {
   --😀: #644dff;
