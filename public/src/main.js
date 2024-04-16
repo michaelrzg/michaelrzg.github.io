@@ -10,7 +10,16 @@ let renderer = new THREE.WebGLRenderer({
   canvas: document.querySelector("#background"),
   antialias: true,
 });
-
+let percent=0; let strper="";
+THREE.DefaultLoadingManager.onProgress = function (url, itemsLoaded, itemsTotal){
+ percent = (itemsLoaded / itemsTotal)*100
+ percent = parseInt(percent)
+ strper = percent.toString();
+ document.getElementById("progress").innerHTML =strper
+}
+THREE.DefaultLoadingManager.onLoad = function (){
+  stopLoading();
+}
 renderer.setSize(window.innerWidth, window.innerHeight);
 
 //set up the renderer with the default settings for threejs.org/editor - revision r153
@@ -25,9 +34,7 @@ renderer.toneMapping = THREE.NoToneMapping;
 renderer.setClearColor(0xffffff, 0);
 //make sure three/build/three.module.js is over r152 or this feature is not available.
 renderer.outputColorSpace = THREE.SRGBColorSpace;
-
 const scene = new THREE.Scene();
-
 let cameraList = [];
 
 let camera = new THREE.PerspectiveCamera(
@@ -53,7 +60,7 @@ const animate = (t) => {
   interactionManager.update();
   TWEEN.update(t);
   requestAnimationFrame(animate);
-  console.log(camera.position)
+  //console.log(camera.position)
 };
 
 camera.position.set(300, 150, 80);
@@ -463,10 +470,7 @@ document.getElementById("background").style.display = "none"
 document.getElementById("startbutton").style.display = "none"
 document.getElementById("reveal").style.display = "none"
 document.getElementById("text").style.display = "none"
-var timeout;
-function loadPage() {
-  timeout = setTimeout(stopLoading, 3000);
-}
+
 function stopLoading(){
 
   document.getElementById("background").style.display = "block"
@@ -477,7 +481,6 @@ function stopLoading(){
   document.getElementById("emailME").style.display = "block"
 
 }
-loadPage()
 function toggleAllOff(){
 document.getElementById("emailME").style.display = "none"
 document.getElementById("reveal").style.display = "none"
@@ -519,5 +522,6 @@ function toggleRevealed(){
   }
 }
 }
-var controller = new Controller();
-controller.bigScreenTransition()
+
+
+

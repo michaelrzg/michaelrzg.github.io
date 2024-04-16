@@ -115,5 +115,8 @@ display: none;
 #audio{
 z-index: 0;
 }
+#progress{
+ left: 40%;
+}
 
 
