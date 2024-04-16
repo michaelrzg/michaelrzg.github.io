@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+  <link rel="stylesheet" type="text/css" href="/public/src/style.css" />
+  <head lang="en">
+    <meta charset="utf-8" />
+    <title>Mike's Chicken</title>
+    <style>
+      .loader{
+  position: absolute;
+  left: 44%;
+  top: 40%;
+}
+.glitch {
+position: relative;
+font-size: 25px;
+font-weight: 700;
+line-height: 1.2;
+color: #fff;
+letter-spacing: 5px;
+z-index: 1;
+animation: shift 1s ease-in-out infinite alternate;
+}
+
+.glitch:before,
+.glitch:after {
+display: block;
+content: attr(data-glitch);
+position: absolute;
+top: 0;
+left: 0;
+opacity: 0.8;
+}
+
+.glitch:before {
+animation: glitch 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+color: #8b00ff;
+z-index: -1;
+}
+
+.glitch:after {
+animation: glitch 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both infinite;
+color: #00e571;
+z-index: -2;
+}
+
+@keyframes glitch {
+0% {
+transform: translate(0);
+}
+
+20% {
+transform: translate(-3px, 3px);
+}
+
+40% {
+transform: translate(-3px, -3px);
+}
+
+60% {
+transform: translate(3px, 3px);
+}
+
+80% {
+transform: translate(3px, -3px);
+}
+
+to {
+transform: translate(0);
+}
+}
+
+@keyframes shift {
+0%, 40%, 44%, 58%, 61%, 65%, 69%, 73%, 100% {
+transform: skewX(0deg);
+}
+
+41% {
+transform: skewX(10deg);
+}
+
+42% {
+transform: skewX(-10deg);
+}
+
+59% {
+transform: skewX(40deg) skewY(10deg);
+}
+
+60% {
+transform: skewX(-40deg) skewY(-10deg);
+}
+
+63% {
+transform: skewX(10deg) skewY(-5deg);
+}
+
+70% {
+transform: skewX(-50deg) skewY(-20deg);
+}
+
+71% {
+transform: skewX(10deg) skewY(-10deg);
+}
+}
+    </style>
+     
+    
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "./node_modules/three/build/three.module.js"
+        }
+      }
+    </script>
+	<link rel="icon" type="image/x-icon" href="/public//models/images/chicken.ico">
+  </head>
+  <body>
+	
+
+<script type="module" src="/public/src/main.js"></script>
+    <button id="startbutton" class="button" onclick="">home</button>
+	<button id="resume" class="button" onclick="">resume</button>
+	<button id="projects" class="button" onclick="">projects</button>
+	<button id="contact" class="button" onclick="">contact</button>
+	<button id="about" class="button" onclick="">about me</button>
+	<button id="reveal" class="button" onclick="">reveal all</button>
+	<button id="emailME" class="button" onclick="">email me</button>
+    <h1 id="text">&lt;start exploring or press reveal all&gt;</h1>
+    <audio autoplay id="audio">
+      <source src="/public/models/audio/MikesChickenAudio.mp3" type="audio/mpeg">
+    </audio>
+	<div id= "load" class="loader">
+		<div data-glitch="Starting the Fryers..." class="glitch">Starting the Fryers...</div>
+	 </div>
+	 
+    <!-- Canvas is necessary to hold a scene  -->
+    <canvas id="background"> </canvas>
+    
+		
+	</script>
+  <script> 
+  var audio = document.getElementById("audio");
+  audio.autoplay = true;
+  audio.volume = 0.1;</script>
+  </body>
+</html>
