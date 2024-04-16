@@ -116,7 +116,9 @@ transform: skewX(10deg) skewY(-10deg);
   </head>
   <body>
 	
-
+<div id= "load" class="loader">
+		<div data-glitch="Starting the Fryers..." class="glitch">Starting the Fryers...</div>
+	 </div>
 <script type="module" src="/public/src/main.js"></script>
     <button id="startbutton" class="button" onclick="">home</button>
 	<button id="resume" class="button" onclick="">resume</button>
@@ -125,13 +127,12 @@ transform: skewX(10deg) skewY(-10deg);
 	<button id="about" class="button" onclick="">about me</button>
 	<button id="reveal" class="button" onclick="">reveal all</button>
 	<button id="emailME" class="button" onclick="">email me</button>
+  <script></script>
     <h1 id="text">&lt;start exploring or press reveal all&gt;</h1>
     <audio autoplay id="audio">
       <source src="/public/models/audio/MikesChickenAudio.mp3" type="audio/mpeg">
     </audio>
-	<div id= "load" class="loader">
-		<div data-glitch="Starting the Fryers..." class="glitch">Starting the Fryers...</div>
-	 </div>
+	
 	 
     <!-- Canvas is necessary to hold a scene  -->
     <canvas id="background"> </canvas>

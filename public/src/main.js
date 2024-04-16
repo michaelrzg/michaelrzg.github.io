@@ -4,6 +4,7 @@ import { OrbitControls } from '/node/three/examples/jsm/controls/OrbitControls.j
 import { InteractionManager } from "/node/three.interactive/build/three.interactive.js";
 import * as TWEEN from "../../node/@tweenjs/tween.js/dist/tween.esm.js";
 //Renderer does the job of rendering the graphics
+
 let renderer = new THREE.WebGLRenderer({
   //Defines the canvas component in the DOM that will be used
   canvas: document.querySelector("#background"),
@@ -52,7 +53,7 @@ const animate = (t) => {
   interactionManager.update();
   TWEEN.update(t);
   requestAnimationFrame(animate);
-  //console.log(camera.position)
+  console.log(camera.position)
 };
 
 camera.position.set(300, 150, 80);
@@ -61,11 +62,13 @@ controls.maxPolarAngle = Math.PI / 2;
 controls.rotateSpeed = 0.4;
 controls.maxDistance = 23;
 controls.target = new THREE.Vector3(-5.5, 1, -1.3);
-controls.enableZoom = false;
+controls.enableZoom = true;
 controls.enablePan = false;
 controls.autoRotate = true;
 controls.autoRotateSpeed = 0.2;
 controls.autoRotateSpeed *=-1;
+
+
 //retrieve list of all cameras
 function retrieveListOfCameras(scene) {
   // Get a list of all cameras in the scene
@@ -462,7 +465,7 @@ document.getElementById("reveal").style.display = "none"
 document.getElementById("text").style.display = "none"
 var timeout;
 function loadPage() {
-  timeout = setTimeout(stopLoading, 2000);
+  timeout = setTimeout(stopLoading, 3000);
 }
 function stopLoading(){
 
@@ -482,8 +485,6 @@ aboutButton.style.display="none"
 resumeButton.style.display="none"
 projectsButton.style.display="none"
 contactButton.style.display="none"
-document.getElementById("audio").style.display = "none"
-document.querySelector("audio").play();
 
 
 }

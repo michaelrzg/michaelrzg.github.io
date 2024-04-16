@@ -63,6 +63,7 @@ h1 {
   position: absolute;
   bottom: 15%;
   left:1%;
+  display: none;
 }
 #projects{
 
@@ -70,6 +71,7 @@ h1 {
   position: absolute;
   bottom: 20%;
   left:1%;
+  display: none;
 }
 #contact{
 
@@ -77,6 +79,7 @@ h1 {
   position: absolute;
   bottom: 25%;
   left:1%;
+  display: none;
 }
 #about{
 
@@ -84,6 +87,7 @@ h1 {
   position: absolute;
   bottom: 10%;
   left:1%;
+  display: none;
 }
 #reveal{
   
@@ -91,6 +95,7 @@ h1 {
   position: absolute;
   bottom: 10%;
   left:90%;
+  display: none;
 }
 #emailME{
 
@@ -99,6 +104,10 @@ h1 {
   position: absolute;
   bottom: 5%;
   left:90%;
+  display: none;
+}
+#startbutton{
+display: none;
 }
 
 
