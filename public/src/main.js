@@ -60,7 +60,8 @@ LoadGLTFByPath(scene)
   video.rotateY(8.4)
   video.position.set(-7.62, 1.7, -6.4)
   scene.add(video)
-  
+  vidTexture.needsUpdate = true;
+  document.getElementById("vid").play()
   const bannerFile = document.getElementById("banner")
   const banText = new THREE.VideoTexture(bannerFile)
   const banMat =  new THREE.MeshBasicMaterial( {map: banText, side: THREE.FrontSide, toneMapped: false} );
@@ -69,7 +70,8 @@ LoadGLTFByPath(scene)
   mainBanner.rotateY(7.86)
   mainBanner.position.set(-5.7,6.45,-0.7)
   scene.add(mainBanner)
-  
+  banText.needsUpdate = true;
+  document.getElementById("banner").play()
   const home = document.getElementById("vendHome")
   const hometext = new THREE.VideoTexture(home)
   const homemat =  new THREE.MeshBasicMaterial( {map: hometext, side: THREE.FrontSide, toneMapped: false} );
@@ -77,7 +79,8 @@ LoadGLTFByPath(scene)
   const homeVending = new THREE.Mesh(homeplay, homemat);
   homeVending.position.set(-4.45,1.7,3.4)
   scene.add(homeVending)
-  
+  hometext.needsUpdate = true;
+  document.getElementById("vendHome").play()
 //animate function
 const animate = (t) => {
    vidTexture.update();
