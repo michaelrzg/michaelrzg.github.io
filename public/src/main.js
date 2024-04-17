@@ -69,9 +69,9 @@ controls.maxPolarAngle = Math.PI / 2;
 controls.rotateSpeed = 0.3;
 controls.maxDistance = 23;
 controls.target = new THREE.Vector3(-5.5, 1, -1.3);
-controls.enableZoom = false;
+controls.enableZoom = true;
 controls.enablePan = false;
-controls.autoRotate = true;
+controls.autoRotate = false;
 controls.autoRotateSpeed = 0.2;
 controls.autoRotateSpeed *=-1;
 
@@ -101,7 +101,7 @@ function updateCameraAspect(camera) {
 }
 
 function createCube({ color, x, y, z }) {
-  const geometry = new THREE.PlaneGeometry();
+  const geometry = new THREE.PlaneGeometry(3,1.5);
   const material = new THREE.MeshLambertMaterial({ color });
   const cube = new THREE.Mesh(geometry, material);
   cube.position.set(x, y, z);
@@ -535,6 +535,29 @@ function toggleRevealed(){
   }
 }
 }
+const vidFile = document.getElementById("vid")
+const vidTexture = new THREE.VideoTexture(vidFile)
+const videoMaterial =  new THREE.MeshBasicMaterial( {map: vidTexture, side: THREE.FrontSide, toneMapped: false} );
+const vidPlayer = new THREE.PlaneGeometry(1.2,.8)
+const video = new THREE.Mesh(vidPlayer, videoMaterial);
+video.rotateY(8.4)
+video.position.set(-7.62, 1.7, -6.4)
+scene.add(video)
 
+const bannerFile = document.getElementById("banner")
+const banText = new THREE.VideoTexture(bannerFile)
+const banMat =  new THREE.MeshBasicMaterial( {map: banText, side: THREE.FrontSide, toneMapped: false} );
+const banPlayer = new THREE.PlaneGeometry(4.7,2)
+const mainBanner = new THREE.Mesh(banPlayer, banMat);
+mainBanner.rotateY(7.86)
+mainBanner.position.set(-5.7,6.45,-0.7)
+scene.add(mainBanner)
 
+const home = document.getElementById("vendHome")
+const hometext = new THREE.VideoTexture(home)
+const homemat =  new THREE.MeshBasicMaterial( {map: hometext, side: THREE.FrontSide, toneMapped: false} );
+const homeplay = new THREE.PlaneGeometry(.9,1.6)
+const homeVending = new THREE.Mesh(homeplay, homemat);
+homeVending.position.set(-4.45,1.7,3.4)
+scene.add(homeVending)
 

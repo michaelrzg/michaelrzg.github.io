@@ -1,6 +1,6 @@
 import { GLTFLoader } from '/node/three/examples/jsm/loaders/GLTFLoader.js';
 
-const scenePath = '/public/models/MikesChickenShopNoChick.gltf'
+const scenePath = '/public/models/MikesChickenShopL.gltf'
 
 export const LoadGLTFByPath = (scene) => {
     return new Promise((resolve, reject) => {
