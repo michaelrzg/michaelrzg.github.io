@@ -48,8 +48,7 @@ h1 {
   filter: drop-shadow(0 15px 20px var(--😀😀😀));
   z-index: 10;
   position: absolute;
-  bottom: 5%;
-  left:1%;
+  
 }
 
 .button:active {
@@ -58,7 +57,40 @@ h1 {
   transform: skew(-10deg) translateY(8px);
   box-shadow: 0 0 0 var(--😀😀😀);
 }
+.button2 {
+  --😀: #644dff;
+  --😀😀: #0b2370;
+  --😀😀😀: #1f16a563;
+  cursor: pointer;
+  width: 200px;
+  height: 48px;
+  align-items: left;
+  justify-content: left;
+  gap: 1rem;
+  font-size: 1.125em;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #fff;
+  background: var(--😀);
+  border: 2px solid var(--😀😀);
+  border-radius: 0.75rem;
+  box-shadow: 0 8px 0 var(--😀😀);
+  transform: skew(-10deg);
+  transition: all 0.1s ease;
+  filter: drop-shadow(0 15px 20px var(--😀😀😀));
+  z-index: 10;
+  position: absolute;
+  
+}
+.right{
+  sid
+}
+.button2:active {
 
+  letter-spacing: 0px;
+  transform: skew(-10deg) translateY(8px);
+  box-shadow: 0 0 0 var(--😀😀😀);
+}
 #resume{
   z-index: 10;
   position: absolute;
@@ -102,13 +134,16 @@ h1 {
 
 
   z-index: 10;
-  position: absolute;
+  position: fixed;
   bottom: 5%;
   left:90%;
   display: none;
+  float: right;
 }
 #startbutton{
 display: none;
+bottom: 5%;
+left: 1%;
 }
 #res{
   z-index: 10;
