@@ -80,9 +80,9 @@ LoadGLTFByPath(scene)
   
 //animate function
 const animate = (t) => {
-   vidTexture.needsUpdate = true;
-  hometext.needsUpdate = true;
-  banText.needsUpdate = true;
+   vidTexture.update();
+  hometext.update();
+  banText.update();
   controls.update();
   renderer.render(scene, camera);
   interactionManager.update();
