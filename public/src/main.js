@@ -66,10 +66,10 @@ const animate = (t) => {
 camera.position.set(300, 150, 80);
 let controls = new OrbitControls(camera, renderer.domElement);
 controls.maxPolarAngle = Math.PI / 2;
-controls.rotateSpeed = 0.4;
+controls.rotateSpeed = 0.3;
 controls.maxDistance = 23;
 controls.target = new THREE.Vector3(-5.5, 1, -1.3);
-controls.enableZoom = true;
+controls.enableZoom = false;
 controls.enablePan = false;
 controls.autoRotate = true;
 controls.autoRotateSpeed = 0.2;
@@ -173,6 +173,7 @@ homebutton.addEventListener("click", (event) => {
 var resumeButton = document.getElementById("resume");
 resumeButton.addEventListener("click", (event)=>{
  moveToSign()
+ document.getElementById("res").style.display = "block"
 })
 //sample
 var projectsButton = document.getElementById("projects");
@@ -211,8 +212,8 @@ sign.addEventListener("click", (event) => {
     resumeRevealed=true;
   }
   moveToSign();
-  resumeButton.style.display = "block"
-
+  resumeButton.style.display = "none"
+  document.getElementById("res").style.display = "block"
   if (buttonsRevealed>=4){
     revealButton.style.display="none";
   }
@@ -230,7 +231,8 @@ vending.addEventListener("click", (event) => {
   }
 });
 newsStand.addEventListener("click",(event)=>{
-  
+  aboutButton.style.display = "none"
+  document.getElementById("abt").style.display = "block"
   if(!aboutRevealed){
     buttonsRevealed++;
     aboutRevealed = true;
@@ -277,7 +279,7 @@ function moveToBusinessCard(){
   controls.enableRotate=false
   controls.autoRotateSpeed=0
   toggleAllOff();
-  contactButton.style.display = "block"
+  document.getElementById("bis").style.display = "block"
   controls.target = new THREE.Vector3(-3,.8,-6)
   new TWEEN.Tween(camera.position)
     .to(businessCardPosition, 1000)
@@ -417,6 +419,7 @@ function moveToVendingFromStand(){
 function moveToVending(){
   controls.enableRotate=false
   controls.target = new THREE.Vector3(-5.5, 1, -1.3);
+  projectsButton.style.display = "none";
   if (state == 3){
     moveToVendingFromNews()
   }
@@ -436,6 +439,9 @@ function moveToVending(){
   }
   state=2;
   toggleAllOff();
+  document.getElementById("proj").style.display = "block"
+  
+  
 }
 function moveHome(){
   controls.enableRotate=true
@@ -470,9 +476,8 @@ document.getElementById("background").style.display = "none"
 document.getElementById("startbutton").style.display = "none"
 document.getElementById("reveal").style.display = "none"
 document.getElementById("text").style.display = "none"
-
 function stopLoading(){
-
+ 
   document.getElementById("background").style.display = "block"
   document.getElementById("startbutton").style.display = "block"
   document.getElementById("reveal").style.display = "block"
@@ -488,7 +493,7 @@ aboutButton.style.display="none"
 resumeButton.style.display="none"
 projectsButton.style.display="none"
 contactButton.style.display="none"
-
+ 
 
 }
 function toggleRevealed(){
@@ -499,19 +504,25 @@ function toggleRevealed(){
     resumeButton.style.display= "block";
     projectsButton.style.display = "block"
     contactButton.style.display= "block"
+    document.getElementById("res").style.display = "none"
+    document.getElementById("abt").style.display = "none"
   }
   else{
   if(aboutRevealed){
     aboutButton.style.display = "block"
+    document.getElementById("abt").style.display = "none"
   }
   if(resumeRevealed){
     resumeButton.style.display= "block";
+    document.getElementById("res").style.display = "none"
   }
   if(projectsRevelased){
     projectsButton.style.display = "block"
+    document.getElementById("proj").style.display = "none"
   }
   if(contactRevealed){
     contactButton.style.display= "block"
+    document.getElementById("bis").style.display = "none"
   }
   if(buttonsRevealed>=4){
     revealButton.style.display = "none"

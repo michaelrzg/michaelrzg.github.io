@@ -9,6 +9,7 @@
   position: absolute;
   float:none;
   margin:0 auto;
+  top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
 }
@@ -123,6 +124,7 @@ transform: skewX(10deg) skewY(-10deg);
     <div data-glitch="" id ="progress"class="glitch">0%</div>
 	 </div>
 <script type="module" src="/public/src/main.js"></script>
+<div class = "allButtons">
 <div class = "leftButtons">
   <button id="startbutton" class="button" onclick="">home</button>
 	<button id="resume" class="button" onclick="">resume</button>
@@ -133,7 +135,12 @@ transform: skewX(10deg) skewY(-10deg);
 </div>
 <div class = "rightButtons">
   <button id="reveal" class="button" onclick="">reveal all</button>
-	<button id="emailME" class="button" onclick="">email me</button>
+	<a href="mailto:michaelrizig@gmail.com" class="button" id="emailME"><img id = "download"src="public/models/images/email.png"></a>
+  <a href="/public/models/Resume_Revised.pdf" target="_blank" class="button" id="res"><img id = "download"src="public/models/images/download.png"></a>
+  <a href="https://www.linkedin.com/in/michael-rizig-60280b1a9/" target="_blank" class="button" id="bis"><img id = "download"src="public/models/images/download.png"></a>
+  <a href="/public/models/news.pdf" target="_blank" class="button" id="abt"><img id = "download"src="public/models/images/download.png"></a>
+  <a href="/public/models/news.pdf" target="_blank" class="button" id="proj"><img id = "download"src="public/models/images/download.png"></a>
+</div>
 </div>
   <script></script>
     <h1 id="text">&lt;start exploring or press reveal all&gt;</h1>

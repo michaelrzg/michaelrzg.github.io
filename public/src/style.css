@@ -22,13 +22,7 @@ h1 {
   left: 45%;
   color: white;
 }
-.loader{
-top: 40%;
 
-}
-#progress{
-  
-}
 
 .button {
   --😀: #644dff;
@@ -116,7 +110,13 @@ top: 40%;
 #startbutton{
 display: none;
 }
-
+#res{
+  z-index: 10;
+  position: absolute;
+  bottom: 17%;
+  left:1%;
+  display: none;
+}
 
 
 #audio{
@@ -125,4 +125,28 @@ z-index: 0;
 #progress{
  left: 40%;
 }
-
+#bis{
+  z-index: 10;
+  position: absolute;
+  bottom: 29%;
+  left:1%;
+  display: none;
+}
+#download{
+  height: 50px;
+  margin-left: 35%;
+}
+#abt{
+  z-index: 10;
+  position: absolute;
+  bottom: 11%;
+  left:1%;
+  display: none;
+}
+#proj{
+  z-index: 10;
+  position: absolute;
+  bottom: 23%;
+  left:1%;
+  display: none;
+}
