@@ -102,9 +102,9 @@ controls.maxPolarAngle = Math.PI / 2;
 controls.rotateSpeed = 0.3;
 controls.maxDistance = 23;
 controls.target = new THREE.Vector3(-5.5, 1, -1.3);
-controls.enableZoom = true;
+controls.enableZoom = false;
 controls.enablePan = false;
-controls.autoRotate = false;
+controls.autoRotate = true;
 controls.autoRotateSpeed = 0.2;
 controls.autoRotateSpeed *=-1;
 
@@ -284,6 +284,8 @@ businessCard.addEventListener("click", (event)=>{
 
 function moveToNews(){
   aboutButton.style.display = "none"
+  document.getElementById("abt").style.display = "block"
+
   if (state!=3){
   toggleAllOff();
   controls.enableRotate=false
