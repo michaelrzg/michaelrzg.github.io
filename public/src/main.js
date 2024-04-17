@@ -250,6 +250,7 @@ businessCard.addEventListener("click", (event)=>{
   contactButton.style.display = "block";
 
 function moveToNews(){
+  aboutButton.style.display = "none"
   if (state!=3){
   toggleAllOff();
   controls.enableRotate=false
@@ -259,7 +260,6 @@ function moveToNews(){
   else if (state==2 || state==0){
     console.log("D")
     moveToNewsFromVending()
-    aboutButton.style.display = "block"
   }
   else{
    controls.autoRotateSpeed=0;
@@ -271,7 +271,7 @@ function moveToNews(){
     })
     .start(); 
   }
-    aboutButton.style.display = "none"
+    
     state=3
 }
 }
