@@ -506,6 +506,8 @@ function toggleRevealed(){
     contactButton.style.display= "block"
     document.getElementById("res").style.display = "none"
     document.getElementById("abt").style.display = "none"
+    document.getElementById("proj").style.display = "none"
+    document.getElementById("bis").style.display = "none"
   }
   else{
   if(aboutRevealed){
