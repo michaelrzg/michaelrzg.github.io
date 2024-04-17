@@ -271,7 +271,7 @@ function moveToNews(){
     })
     .start(); 
   }
-    aboutButton.style.display = "block"
+    aboutButton.style.display = "none"
     state=3
 }
 }
