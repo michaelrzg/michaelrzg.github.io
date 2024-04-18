@@ -93,7 +93,7 @@ const animate = (t) => {
   requestAnimationFrame(animate);
  
 
-  console.log(camera.position)
+  //console.log(camera.position)
 };
 
 camera.position.set(300, 150, 80);
@@ -342,7 +342,14 @@ function moveToBusinessCard(){
   controls.autoRotateSpeed=0
   toggleAllOff();
   document.getElementById("bis").style.display = "block"
-  controls.target = new THREE.Vector3(-3,.8,-6)
+  //controls.target = new THREE.Vector3(-3,.8,-6)
+  new TWEEN.Tween(controls.target).to(businessCard.position,1000)
+  .easing(TWEEN.Easing.Linear.None)
+  .onUpdate((coords) => { 
+    controls.target.set(coords.x, coords.y, coords.z);
+   
+  })
+  .start();
   new TWEEN.Tween(camera.position)
     .to(businessCardPosition, 1000)
     .easing(TWEEN.Easing.Linear.None)
@@ -522,8 +529,14 @@ function moveHome(){
 }
 
 function moveToScreen(){
-  controls.target = screenView.position
-  
+  //controls.target = screenView.position
+  new TWEEN.Tween(controls.target).to(screenView.position,1000)
+  .easing(TWEEN.Easing.Linear.None)
+  .onUpdate((coords) => { 
+    controls.target.set(coords.x, coords.y, coords.z);
+   
+  })
+  .start();
   new TWEEN.Tween(camera.position)
     .to(screenPositon, 1000)
     .easing(TWEEN.Easing.Linear.None)
@@ -534,7 +547,13 @@ function moveToScreen(){
 }
 function moveToTv(){
   
-  
+  new TWEEN.Tween(controls.target).to(tvView.position,1000)
+  .easing(TWEEN.Easing.Linear.None)
+  .onUpdate((coords) => { 
+    controls.target.set(coords.x, coords.y, coords.z);
+   
+  })
+  .start();
   new TWEEN.Tween(camera.position)
     .to(tvPositon, 1000)
     .easing(TWEEN.Easing.Linear.None)
@@ -542,7 +561,7 @@ function moveToTv(){
       camera.position.set(coords.x, coords.y, coords.z);
     })
     .start();
-    controls.target = tvView.position
+   
 }
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
