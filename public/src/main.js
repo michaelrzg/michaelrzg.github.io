@@ -600,7 +600,10 @@ aboutButton.style.display="none"
 resumeButton.style.display="none"
 projectsButton.style.display="none"
 contactButton.style.display="none"
- 
+document.getElementById("res").style.display = "none"
+document.getElementById("abt").style.display = "none"
+document.getElementById("proj").style.display = "none"
+document.getElementById("bis").style.display = "none"
 
 }
 function toggleRevealed(){
