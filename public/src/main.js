@@ -55,10 +55,10 @@ LoadGLTFByPath(scene)
   const vidFile = document.getElementById("vid")
   const vidTexture = new THREE.VideoTexture(vidFile)
   const videoMaterial =  new THREE.MeshBasicMaterial( {map: vidTexture, side: THREE.FrontSide, toneMapped: false} );
-  const vidPlayer = new THREE.PlaneGeometry(1.2,.8)
+  const vidPlayer = new THREE.PlaneGeometry(1.05,.8)
   const video = new THREE.Mesh(vidPlayer, videoMaterial);
   video.rotateY(8.4)
-  video.position.set(-7.62, 1.7, -6.4)
+  video.position.set(-7.64, 1.7, -6.32)
   scene.add(video)
   vidTexture.needsUpdate = true;
   document.getElementById("vid").play()
@@ -93,7 +93,7 @@ const animate = (t) => {
   requestAnimationFrame(animate);
  
 
-  //console.log(camera.position)
+  console.log(camera.position)
 };
 
 camera.position.set(300, 150, 80);
@@ -197,6 +197,33 @@ let state = 0;
 //2:projects
 //3:about
 //buttons 
+//create screenviewer 
+const screeng = new THREE.BoxGeometry(1, 3, 5.5);
+const screenm = new THREE.MeshLambertMaterial(0x0065d9);
+const screenView = new THREE.Mesh(screeng, screenm);
+screenView.visible = false
+scene.add(screenView);
+screenView.position.set(-5.6,6.9,-0.8)
+screenView.addEventListener("click",(event)=>{
+  console.log("screen clicked")
+  moveToScreen();
+})
+const screenPositon = new THREE.Vector3(2.029,6.9,-0.308)
+
+const tvg = new THREE.BoxGeometry(1.45, 1.45, 1.45);
+const tvnm = new THREE.MeshLambertMaterial(0x0065d9);
+const tvView = new THREE.Mesh(tvg, tvnm);
+scene.add(tvView);
+tvView.visible = false
+tvView.position.set(-7.9,1.6,-6.2)
+
+tvView.addEventListener("click",(event)=>{
+  console.log("tv clicked")
+  moveToTv();
+})
+const tvPositon = new THREE.Vector3(-5.604,1.9747,-7.85)
+
+
 
 var homebutton = document.getElementById("startbutton");
 homebutton.addEventListener("click", (event) => {
@@ -493,6 +520,30 @@ function moveHome(){
     state=0;
     toggleRevealed();
 }
+
+function moveToScreen(){
+  controls.target = screenView.position
+  
+  new TWEEN.Tween(camera.position)
+    .to(screenPositon, 1000)
+    .easing(TWEEN.Easing.Linear.None)
+    .onUpdate((coords) => {
+      camera.position.set(coords.x, coords.y, coords.z);
+    })
+    .start();
+}
+function moveToTv(){
+  
+  
+  new TWEEN.Tween(camera.position)
+    .to(tvPositon, 1000)
+    .easing(TWEEN.Easing.Linear.None)
+    .onUpdate((coords) => {
+      camera.position.set(coords.x, coords.y, coords.z);
+    })
+    .start();
+    controls.target = tvView.position
+}
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -500,6 +551,8 @@ interactionManager.add(sign);
 interactionManager.add(vending);
 interactionManager.add(newsStand)
 interactionManager.add(businessCard)
+interactionManager.add(screenView)
+interactionManager.add(tvView)
 animate();
 var moving = false;
 aboutButton.style.display="none"
