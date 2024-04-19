@@ -434,7 +434,7 @@ renderer.useLegacyLights = false;
 renderer.toneMapping = THREE.NoToneMapping;
 renderer.setClearColor(0xffffff, 0);
 renderer.outputColorSpace = THREE.SRGBColorSpace;
-
+document.body.appendChild(renderer.domElement);
 /* set up loading manager to visualize loading screen and percentage*/
 
 /* onProgress = update percentage on loading screen */
@@ -761,17 +761,17 @@ const roofm = new THREE.MeshDepthMaterial(0xff0000);
 const roof = new THREE.Mesh(roofg, roofm);
 scene.add(roof);
 
-roof.visable = false;
+roof.visible = false;
 roof.rotateX(1.5708);
 roof.position.set(-6.7, 5, -1);
+roof.recieveShadows = true;
 roof.addEventListener("click", (event) => {
-  console.log("rightwall clicked");
+  console.log("roof clicked");
   //stopPropagation to prevent another eventlister from firing if wall is clicked
   //so that no clicking through walls can occur
   event.stopPropagation();
 });
 interactionManager.add(roof);
-
 /* end of adding collision walls*/
 
 /*finally, animate*/
