@@ -1,7 +1,7 @@
 canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 body,
 html {
@@ -18,12 +18,13 @@ h1 {
   font-weight: normal;
   font-size: 1.9em;
   position: absolute;
-  bottom:0%;
+  bottom: 0%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   color: white;
+  display: none;
 }
-.words{
+.words {
   width: 100%;
   height: 100%;
 }
@@ -52,11 +53,9 @@ h1 {
   filter: drop-shadow(0 15px 20px var(--😀😀😀));
   z-index: 10;
   position: absolute;
-  
 }
 
 .button:active {
-
   letter-spacing: 0px;
   transform: skew(-10deg) translateY(8px);
   box-shadow: 0 0 0 var(--😀😀😀);
@@ -84,109 +83,103 @@ h1 {
   filter: drop-shadow(0 15px 20px var(--😀😀😀));
   z-index: 10;
   position: absolute;
-  
 }
-.right{
+.right {
   width: 100%;
   height: 100%;
 }
 .button2:active {
-
   letter-spacing: 0px;
   transform: skew(-10deg) translateY(8px);
   box-shadow: 0 0 0 var(--😀😀😀);
 }
-#resume{
+#background {
+  display: none;
+}
+#resume {
   z-index: 10;
   position: absolute;
   bottom: 17%;
-  left:2%;
+  left: 2%;
   display: none;
 }
-#projects{
-
+#projects {
   z-index: 10;
   position: absolute;
   bottom: 23%;
-  left:2%;
+  left: 2%;
   display: none;
 }
-#contact{
-
+#contact {
   z-index: 10;
   position: absolute;
   bottom: 29%;
-  left:2%;
+  left: 2%;
   display: none;
 }
-#about{
-
+#about {
   z-index: 10;
   position: absolute;
   bottom: 11%;
-  left:2%;
+  left: 2%;
   display: none;
 }
-#reveal{
-  
+#reveal {
   z-index: 10;
   position: absolute;
   bottom: 11%;
-  right:2%;
+  right: 2%;
   display: none;
 }
-#emailME{
-
-
+#emailME {
   z-index: 10;
   position: fixed;
   bottom: 5%;
-  right:2%;
+  right: 2%;
   display: none;
 }
-#startbutton{
-display: none;
-bottom: 5%;
-left: 2%;
+#startbutton {
+  display: none;
+  bottom: 5%;
+  left: 2%;
 }
-#res{
+#res {
   z-index: 10;
   position: absolute;
   bottom: 17%;
-  left:2%;
+  left: 2%;
   display: none;
 }
 
-
-#audio{
-z-index: 0;
+#audio {
+  z-index: 0;
 }
-#progress{
- left: 40%;
+#progress {
+  left: 40%;
 }
-#bis{
+#bis {
   z-index: 10;
   position: absolute;
   bottom: 29%;
-  left:2%;
+  left: 2%;
   display: none;
 }
-#download{
+#download {
   height: 50px;
   margin-left: 35%;
 }
-#abt{
+#abt {
   z-index: 10;
   position: absolute;
   bottom: 11%;
-  left:2%;
+  left: 2%;
   display: none;
 }
-#proj{
+#proj {
   z-index: 10;
   position: absolute;
 
   bottom: 23%;
-  left:2%;
+  left: 2%;
   display: none;
 }
