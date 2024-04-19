@@ -183,10 +183,9 @@ h1 {
   display: none;
 }
 .butto {
+  left: 50%;
+  transform: translate(-50%, 0);
   display: none;
-  margin-left: 50%;
-  margin-top: 50%;
-  transform: translate(-50%, -50%);
   font-size: 25px;
   color: #e1e1e1;
   font-family: inherit;
@@ -224,4 +223,12 @@ h1 {
   transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
   transition-duration: 400ms;
   transition-property: width, left;
+}
+#startBDiv {
+  position: absolute;
+  float: none;
+  margin: 0 auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
