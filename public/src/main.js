@@ -15,7 +15,7 @@ const animate = (t) => {
   TWEEN.update(t);
   requestAnimationFrame(animate);
 
-  //console.log(camera.position)
+  //console.log(camera.position);
 };
 
 /*retrieve list of all cameras*/
@@ -73,11 +73,10 @@ function createCard({ color, x, y, z }) {
 depending on the current camera state, will invoke corresponding function
 to ensure smooth transition*/
 function moveToNews() {
-  aboutButton.style.display = "none";
+  toggleAllOff();
   document.getElementById("abt").style.display = "block";
 
   if (state != 3) {
-    toggleAllOff();
     controls.enableRotate = false;
     if (state == 1) {
       moveToNewsFromStand();
@@ -173,6 +172,14 @@ function moveToVendingFromNews() {
   const i = new THREE.Vector3(-14.32, 2.02, 6.975);
   console.log("Vending clicked");
   controls.autoRotateSpeed = 0;
+  let vendTarget = new THREE.Vector3(-4.5, 1.702, 2.823);
+  new TWEEN.Tween(controls.target)
+    .to(vendTarget, 1000)
+    .easing(TWEEN.Easing.Linear.None)
+    .onUpdate((coords) => {
+      controls.target.set(coords.x, coords.y, coords.z);
+    })
+    .start();
   new TWEEN.Tween(camera.position)
     .to(i, 1000)
     .easing(TWEEN.Easing.Linear.None)
@@ -247,6 +254,14 @@ function moveToVendingFromStand() {
   const i = new THREE.Vector3(18.1, 8.4, 2.27);
   console.log("Vending clicked");
   controls.autoRotateSpeed = 0;
+  let vendTarget = new THREE.Vector3(-4.5, 1.702, 2.823);
+  new TWEEN.Tween(controls.target)
+    .to(vendTarget, 1000)
+    .easing(TWEEN.Easing.Linear.None)
+    .onUpdate((coords) => {
+      controls.target.set(coords.x, coords.y, coords.z);
+    })
+    .start();
   new TWEEN.Tween(camera.position)
     .to(i, 1000)
     .easing(TWEEN.Easing.Linear.None)
@@ -267,15 +282,25 @@ function moveToVendingFromStand() {
 
 /* animates camera to move to vending machine */
 function moveToVending() {
+  toggleAllOff();
+  document.getElementById("projects").style.display = "none";
   controls.enableRotate = false;
   controls.target = new THREE.Vector3(-5.5, 1, -1.3);
   projectsButton.style.display = "none";
+  let vendTarget = new THREE.Vector3(-4.5, 1.702, 2.823);
   if (state == 3) {
     moveToVendingFromNews();
   } else if (state == 1) {
     moveToVendingFromStand();
   } else {
     console.log("Vending clicked");
+    new TWEEN.Tween(controls.target)
+      .to(vendTarget, 1000)
+      .easing(TWEEN.Easing.Linear.None)
+      .onUpdate((coords) => {
+        controls.target.set(coords.x, coords.y, coords.z);
+      })
+      .start();
     controls.autoRotateSpeed = 0;
     new TWEEN.Tween(camera.position)
       .to(vendingPosition, 1000)
@@ -286,12 +311,13 @@ function moveToVending() {
       .start();
   }
   state = 2;
-  toggleAllOff();
+
   document.getElementById("proj").style.display = "block";
 }
 
 /* animates the camera to move back to original position */
 function moveHome() {
+  homebutton.style.display = "none";
   controls.enableRotate = true;
   controls.target = new THREE.Vector3(-5.5, 1, -1.3);
   controls.autoRotateSpeed = 0.2;
@@ -309,6 +335,7 @@ function moveHome() {
 
 /* animates the camera to move to the large screen */
 function moveToScreen() {
+  toggleAllOff();
   //controls.target = screenView.position
   new TWEEN.Tween(controls.target)
     .to(screenView.position, 1000)
@@ -328,6 +355,7 @@ function moveToScreen() {
 
 /* animates the camera to move to the retro TV */
 function moveToTv() {
+  toggleAllOff();
   new TWEEN.Tween(controls.target)
     .to(tvView.position, 1000)
     .easing(TWEEN.Easing.Linear.None)
@@ -352,7 +380,7 @@ function sleep(ms) {
 /* internal function called when loading percentage hits 100% */
 function stopLoading() {
   document.getElementById("background").style.display = "block";
-  document.getElementById("startbutton").style.display = "block";
+  document.getElementById("startbutton").style.display = "none";
   document.getElementById("reveal").style.display = "block";
   document.getElementById("text").style.display = "block";
   document.getElementById("load").style.display = "none";
@@ -361,6 +389,8 @@ function stopLoading() {
 
 /* Simply toggles all elements off */
 function toggleAllOff() {
+  document.getElementById("text").style.display = "none";
+  homebutton.style.display = "block";
   document.getElementById("emailME").style.display = "none";
   document.getElementById("reveal").style.display = "none";
   aboutButton.style.display = "none";
@@ -452,7 +482,10 @@ THREE.DefaultLoadingManager.onProgress = function (
   document.getElementById("progress").innerHTML = strper + "%";
 };
 THREE.DefaultLoadingManager.onLoad = function () {
-  stopLoading();
+  document.getElementById("progress").style.display = "none";
+  document.getElementById("load").style.display = "none";
+  startB.style.display = "block";
+  // stopLoading();
 };
 renderer.setSize(window.innerWidth, window.innerHeight);
 
@@ -613,6 +646,10 @@ tvView.addEventListener("click", (event) => {
   console.log("tv clicked");
   moveToTv();
 });
+var startB = document.getElementById("startB");
+startB.addEventListener("click", (event) => {
+  stopLoading();
+});
 const tvPositon = new THREE.Vector3(-5.604, 1.9747, -7.85);
 var homebutton = document.getElementById("startbutton");
 homebutton.addEventListener("click", (event) => {
@@ -668,7 +705,6 @@ vending.addEventListener("click", (event) => {
     projectsRevelased = true;
   }
   moveToVending();
-  projectsButton.style.display = "block";
   if (buttonsRevealed >= 4) {
     revealButton.style.display = "none";
   }

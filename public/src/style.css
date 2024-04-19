@@ -146,7 +146,7 @@ h1 {
 #res {
   z-index: 10;
   position: absolute;
-  bottom: 17%;
+  bottom: 11%;
   left: 2%;
   display: none;
 }
@@ -160,7 +160,7 @@ h1 {
 #bis {
   z-index: 10;
   position: absolute;
-  bottom: 29%;
+  bottom: 11%;
   left: 2%;
   display: none;
 }
@@ -178,8 +178,50 @@ h1 {
 #proj {
   z-index: 10;
   position: absolute;
-
-  bottom: 23%;
+  bottom: 11%;
   left: 2%;
   display: none;
+}
+.butto {
+  display: none;
+  margin-left: 50%;
+  margin-top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 25px;
+  color: #e1e1e1;
+  font-family: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  position: relative;
+  border: none;
+  background: none;
+  text-transform: uppercase;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 400ms;
+  transition-property: color;
+}
+
+.butto:focus,
+.butto:hover {
+  color: #fff;
+}
+
+.butto:focus:after,
+.butto:hover:after {
+  width: 100%;
+  left: 0%;
+}
+
+.butto:after {
+  content: "";
+  pointer-events: none;
+  bottom: -2px;
+  left: 50%;
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background-color: #fff;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 400ms;
+  transition-property: width, left;
 }
