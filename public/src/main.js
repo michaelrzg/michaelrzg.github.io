@@ -322,7 +322,7 @@ function moveHome() {
   homebutton.style.display = "none";
   controls.enableRotate = true;
   controls.target = new THREE.Vector3(-5.5, 1, -1.3);
-  controls.autoRotateSpeed = 1;
+  controls.autoRotateSpeed = 0.7;
   controls.autoRotateSpeed *= -1;
   new TWEEN.Tween(camera.position)
     .to(startPosition, 1000)
@@ -580,7 +580,7 @@ controls.target = new THREE.Vector3(-5.5, 1, -1.3);
 controls.enableZoom = false;
 controls.enablePan = false;
 controls.autoRotate = true;
-controls.autoRotateSpeed = 1;
+controls.autoRotateSpeed = 0.7;
 controls.autoRotateSpeed *= -1;
 
 /* creating resume sign geometry, adding, and storing position */
