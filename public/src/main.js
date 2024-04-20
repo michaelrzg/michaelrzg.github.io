@@ -382,6 +382,7 @@ function stopLoading() {
   intro();
   document.getElementById("background").style.display = "block";
   document.getElementById("startbutton").style.display = "none";
+  document.getElementById("startPrompt").style.display = "none";
   document.getElementById("reveal").style.display = "block";
   document.getElementById("text").style.display = "none";
   document.getElementById("load").style.display = "none";
@@ -494,6 +495,7 @@ THREE.DefaultLoadingManager.onLoad = function () {
   document.getElementById("progress").style.display = "none";
   document.getElementById("load").style.display = "none";
   startB.style.display = "block";
+  document.getElementById("startPrompt").style.display = "block";
   // stopLoading();
 };
 renderer.setSize(window.innerWidth, window.innerHeight);
