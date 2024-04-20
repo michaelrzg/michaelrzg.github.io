@@ -383,7 +383,7 @@ function stopLoading() {
   document.getElementById("background").style.display = "block";
   document.getElementById("startbutton").style.display = "none";
   document.getElementById("reveal").style.display = "block";
-  document.getElementById("text").style.display = "block";
+  document.getElementById("text").style.display = "none";
   document.getElementById("load").style.display = "none";
   document.getElementById("cDiv").style.display = "flex";
 }
@@ -818,7 +818,10 @@ roof.addEventListener("click", (event) => {
 });
 interactionManager.add(roof);
 /* end of adding collision walls*/
+
 /* add ground mirror effect */
+
+/*
 let groundMirror;
 let geometry = new THREE.PlaneGeometry(50, 50);
 groundMirror = new Reflector(geometry, {
@@ -830,7 +833,7 @@ groundMirror = new Reflector(geometry, {
 groundMirror.position.y = -1;
 groundMirror.rotateX(-Math.PI / 2);
 scene.add(groundMirror);
-
+*/
 /*finally, animate*/
 animate();
 
