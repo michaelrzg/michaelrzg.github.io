@@ -3,7 +3,9 @@ import { LoadGLTFByPath } from "/public/src/Helpers/ModelHelper.js";
 import { OrbitControls } from "/node/three/examples/jsm/controls/OrbitControls.js";
 import { InteractionManager } from "/node/three.interactive/build/three.interactive.js";
 import * as TWEEN from "../../node/@tweenjs/tween.js/dist/tween.esm.js";
-
+import { Reflector } from "/node/three/examples/jsm/objects/Reflector.js";
+import { Refractor } from "/node/three/examples/jsm/objects/Refractor.js";
+import { WaterRefractionShader } from "/node/three/examples/jsm/shaders/WaterRefractionShader.js";
 //animate function
 const animate = (t) => {
   vidTexture.update();
@@ -14,7 +16,7 @@ const animate = (t) => {
   interactionManager.update();
   TWEEN.update(t);
   requestAnimationFrame(animate);
-
+  //refractor.material.uniforms.time.value = t;
   //console.log(camera.position);
 };
 
@@ -379,6 +381,7 @@ function sleep(ms) {
 
 /* internal function called when loading percentage hits 100% */
 function stopLoading() {
+  //TODO: add intro animation
   document.getElementById("background").style.display = "block";
   document.getElementById("startbutton").style.display = "none";
   document.getElementById("reveal").style.display = "block";
@@ -562,7 +565,7 @@ document.getElementById("vendHome").play();
 
 /* creating and initilizing controls for orbital camera */
 let controls = new OrbitControls(camera, renderer.domElement);
-controls.maxPolarAngle = Math.PI / 2;
+controls.maxPolarAngle = Math.PI / 2.3;
 controls.rotateSpeed = 0.3;
 controls.maxDistance = 23;
 controls.target = new THREE.Vector3(-5.5, 1, -1.3);
@@ -809,6 +812,19 @@ roof.addEventListener("click", (event) => {
 });
 interactionManager.add(roof);
 /* end of adding collision walls*/
+/* add groud mirror effect */
+let groundMirror;
+let geometry = new THREE.PlaneGeometry(1000, 1000);
+groundMirror = new Reflector(geometry, {
+  shader: WaterRefractionShader,
+  clipBias: 0.003,
+  textureWidth: window.innerWidth * window.devicePixelRatio,
+  textureHeight: window.innerHeight * window.devicePixelRatio,
+  color: 0xb5b5b5,
+});
+groundMirror.position.y = 0.1;
+groundMirror.rotateX(-Math.PI / 2);
+scene.add(groundMirror);
 
 /*finally, animate*/
 animate();
