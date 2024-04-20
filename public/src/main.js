@@ -820,7 +820,7 @@ interactionManager.add(roof);
 /* end of adding collision walls*/
 /* add ground mirror effect */
 let groundMirror;
-let geometry = new THREE.PlaneGeometry(1000, 1000);
+let geometry = new THREE.PlaneGeometry(50, 50);
 groundMirror = new Reflector(geometry, {
   clipBias: 0,
   textureWidth: window.innerWidth * window.devicePixelRatio,
