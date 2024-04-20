@@ -17,7 +17,7 @@ const animate = (t) => {
   TWEEN.update(t);
   requestAnimationFrame(animate);
   //refractor.material.uniforms.time.value = t;
-  //console.log(camera.position);
+  console.log(camera.position);
 };
 
 /*retrieve list of all cameras*/
@@ -322,7 +322,7 @@ function moveHome() {
   homebutton.style.display = "none";
   controls.enableRotate = true;
   controls.target = new THREE.Vector3(-5.5, 1, -1.3);
-  controls.autoRotateSpeed = 0.2;
+  controls.autoRotateSpeed = 1.5;
   controls.autoRotateSpeed *= -1;
   new TWEEN.Tween(camera.position)
     .to(startPosition, 1000)
@@ -381,15 +381,26 @@ function sleep(ms) {
 
 /* internal function called when loading percentage hits 100% */
 function stopLoading() {
-  //TODO: add intro animation
   document.getElementById("background").style.display = "block";
   document.getElementById("startbutton").style.display = "none";
   document.getElementById("reveal").style.display = "block";
   document.getElementById("text").style.display = "block";
   document.getElementById("load").style.display = "none";
   document.getElementById("emailME").style.display = "block";
-}
 
+  intro();
+}
+function intro() {
+  let finalPosition = new THREE.Vector3(14.23, 11.399, 4.29);
+  camera.position.set(-12.145, 17.87, 12.8);
+  new TWEEN.Tween(camera.position)
+    .to(finalPosition, 1000)
+    .easing(TWEEN.Easing.Quadratic.In.None)
+    .onUpdate((coords) => {
+      camera.position.set(coords.x, coords.y, coords.z);
+    })
+    .start();
+}
 /* Simply toggles all elements off */
 function toggleAllOff() {
   document.getElementById("text").style.display = "none";
@@ -572,7 +583,7 @@ controls.target = new THREE.Vector3(-5.5, 1, -1.3);
 controls.enableZoom = false;
 controls.enablePan = false;
 controls.autoRotate = true;
-controls.autoRotateSpeed = 0.2;
+controls.autoRotateSpeed = 1.5;
 controls.autoRotateSpeed *= -1;
 
 /* creating resume sign geometry, adding, and storing position */
