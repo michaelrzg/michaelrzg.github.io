@@ -4,8 +4,6 @@ import { OrbitControls } from "/node/three/examples/jsm/controls/OrbitControls.j
 import { InteractionManager } from "/node/three.interactive/build/three.interactive.js";
 import * as TWEEN from "../../node/@tweenjs/tween.js/dist/tween.esm.js";
 import { Reflector } from "/node/three/examples/jsm/objects/Reflector.js";
-import { Refractor } from "/node/three/examples/jsm/objects/Refractor.js";
-import { WaterRefractionShader } from "/node/three/examples/jsm/shaders/WaterRefractionShader.js";
 //animate function
 const animate = (t) => {
   vidTexture.update();
@@ -573,7 +571,7 @@ document.getElementById("vendHome").play();
 
 /* creating and initilizing controls for orbital camera */
 let controls = new OrbitControls(camera, renderer.domElement);
-controls.maxPolarAngle = Math.PI / 2.3;
+controls.maxPolarAngle = Math.PI / 2;
 controls.rotateSpeed = 0.3;
 controls.maxDistance = 23;
 controls.target = new THREE.Vector3(-5.5, 1, -1.3);
@@ -820,17 +818,16 @@ roof.addEventListener("click", (event) => {
 });
 interactionManager.add(roof);
 /* end of adding collision walls*/
-/* add groud mirror effect */
+/* add ground mirror effect */
 let groundMirror;
 let geometry = new THREE.PlaneGeometry(1000, 1000);
 groundMirror = new Reflector(geometry, {
-  shader: WaterRefractionShader,
-  clipBias: 0.5,
+  clipBias: 0,
   textureWidth: window.innerWidth * window.devicePixelRatio,
   textureHeight: window.innerHeight * window.devicePixelRatio,
   color: 0x494646,
 });
-groundMirror.position.y = 0;
+groundMirror.position.y = -1;
 groundMirror.rotateX(-Math.PI / 2);
 scene.add(groundMirror);
 
