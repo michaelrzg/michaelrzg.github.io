@@ -821,19 +821,14 @@ interactionManager.add(roof);
 
 /* add ground mirror effect */
 
-/*
-let groundMirror;
 let geometry = new THREE.PlaneGeometry(50, 50);
-groundMirror = new Reflector(geometry, {
-  clipBias: 0,
-  textureWidth: window.innerWidth * window.devicePixelRatio,
-  textureHeight: window.innerHeight * window.devicePixelRatio,
+let groundMirror = new Reflector(geometry, {
   color: 0x494646,
 });
 groundMirror.position.y = -1;
 groundMirror.rotateX(-Math.PI / 2);
 scene.add(groundMirror);
-*/
+
 /*finally, animate*/
 animate();
 
