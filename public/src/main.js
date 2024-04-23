@@ -320,7 +320,7 @@ function moveHome() {
   homebutton.style.display = "none";
   controls.enableRotate = true;
   controls.target = new THREE.Vector3(-5.5, 1, -1.3);
-  controls.autoRotateSpeed = 0.7;
+  controls.autoRotateSpeed = 0.4;
   controls.autoRotateSpeed *= -1;
   new TWEEN.Tween(camera.position)
     .to(startPosition, 1000)
@@ -575,12 +575,12 @@ document.getElementById("vendHome").play();
 let controls = new OrbitControls(camera, renderer.domElement);
 controls.maxPolarAngle = Math.PI / 2;
 controls.rotateSpeed = 0.3;
-controls.maxDistance = 23;
+controls.maxDistance = 19;
 controls.target = new THREE.Vector3(-5.5, 1, -1.3);
 controls.enableZoom = false;
 controls.enablePan = false;
 controls.autoRotate = true;
-controls.autoRotateSpeed = 0.7;
+controls.autoRotateSpeed = 0.4;
 controls.autoRotateSpeed *= -1;
 
 /* creating resume sign geometry, adding, and storing position */
