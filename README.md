@@ -1,4 +1,4 @@
-js and html for 3d interactive resume 'mikes chicken'
+js and html for my portfolio and 3d interactive resume 'mikes chicken'
 
 this project utilizes: vanilla js, react.js, three.js, CSS, HTML, and many libraries and frameworks not listed
 
