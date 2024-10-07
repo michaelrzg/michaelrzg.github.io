@@ -87,7 +87,7 @@ html {
 #hearts {
   position: absolute;
   background-color: black;
-  width: 100%;
+  width: 110%;
   transform: translate(-40%, 430%);
   scale: 10%;
   bottom: 0%;
