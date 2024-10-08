@@ -1,11 +1,3 @@
-/*!
- * Webflow: Front-end site library
- * @license MIT
- * Inline scripts may access the api using an async handler:
- *   var Webflow = Webflow || [];
- *   Webflow.push(readyFunction);
- */
-
 (() => {
   var K_ = Object.create;
   var on = Object.defineProperty;
@@ -1624,26 +1616,6 @@ __p+='`),
             r.msFullscreenElement ||
             !!r.webkitFullscreenElement;
           e(f).attr("style", h ? "display: none !important;" : "");
-        }
-        function d() {
-          var h = e('<a class="w-webflow-badge"></a>').attr(
-              "href",
-              "https://webflow.com?utm_campaign=brandjs"
-            ),
-            m = e("<img>")
-              .attr(
-                "src",
-                "https://d3e54v103j8qbb.cloudfront.net/img/webflow-badge-icon-d2.89e12c322e.svg"
-              )
-              .attr("alt", "")
-              .css({ marginRight: "4px", width: "26px" }),
-            _ = e("<img>")
-              .attr(
-                "src",
-                "https://d3e54v103j8qbb.cloudfront.net/img/webflow-badge-text-d2.c82cec3b78.svg"
-              )
-              .attr("alt", "Made in Webflow");
-          return h.append(m, _), h[0];
         }
         function E() {
           var h = i.children(o),
