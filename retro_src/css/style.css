@@ -2863,6 +2863,7 @@ a {
 }
 
 .finder__wrap {
+  margin-top: 10px;
   z-index: 100;
   max-width: 960px;
   min-height: 50%;

@@ -5572,3 +5572,21 @@
     S
   );
 });
+const urlParams = new URLSearchParams(window.location.search);
+const projects = urlParams.get("projects");
+const kafkak = urlParams.get("kafka");
+const research = urlParams.get("research");
+console.log(urlParams);
+if (projects) {
+  console.log("Projects");
+  document.getElementById("readme").style.display = "none";
+  document.getElementById("projects").style.display = "flex";
+} else if (kafkak) {
+  console.log("Kafka");
+  document.getElementById("readme").style.display = "none";
+  document.getElementById("kafka").style.display = "flex";
+} else if (research) {
+  console.log("Kafka");
+  document.getElementById("readme").style.display = "none";
+  document.getElementById("research").style.display = "flex";
+}
