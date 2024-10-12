@@ -2321,6 +2321,362 @@ These Machine Learning Projects including Unsupervised Learning via K-means algo
             <div class="color-background o20"></div>
           </div>
         </div>
+         <div class="window__position--wrap lstm" id="lstm" style="display: none; height: 101%;">
+          <div class="finder__wrap">
+            <div class="finder__close--trigger">
+              <img src="/retro_src/svg/x-symbol.svg" alt="">
+            </div>
+            <div
+              id="w-node-_45a54e84-53fa-9ae1-8502-5c1da6f8f14f-a6f8f14c"
+              class="finder"
+            >
+              <div class="classic-finder_bar">
+                <div
+                  id="w-node-_45a54e84-53fa-9ae1-8502-5c1da6f8f151-a6f8f14c"
+                  class="classic-finder_bar-stripe"
+                ></div>
+                <div class="classic-finder__bar-middle">
+                  <div class="classic-finder_bar-middle-end">
+                    <div class="classic-finder_bar-stripe thin"></div>
+                    <div class="classic-finder_bar-stripe thin"></div>
+                    <div class="classic-finder_bar-stripe thin"></div>
+                    <div class="classic-finder_bar-stripe thin"></div>
+                    <div class="classic-finder_bar-stripe thin"></div>
+                  </div>
+                  <div class="classic-finder_bar-close">
+                    <div class="classic-finder_bar-close-inner"></div>
+                  </div>
+                  <div class="classic-finder_bar-middle-stretch">
+                    <div class="classic-finder_bar-stripe thin"></div>
+                    <div class="classic-finder_bar-stripe thin"></div>
+                    <div class="classic-finder_bar-stripe thin"></div>
+                    <div class="classic-finder_bar-stripe thin"></div>
+                    <div class="classic-finder_bar-stripe thin"></div>
+                  </div>
+                  <div class="classic-finder_bar-stripe txt-label">
+                    <div>LSTM From Scratch</div>
+                  </div>
+                  <div class="classic-finder_bar-middle-stretch">
+                    <div class="classic-finder_bar-stripe thin"></div>
+                    <div class="classic-finder_bar-stripe thin"></div>
+                    <div class="classic-finder_bar-stripe thin"></div>
+                    <div class="classic-finder_bar-stripe thin"></div>
+                    <div class="classic-finder_bar-stripe thin"></div>
+                  </div>
+                  <div class="classic-finder_bar-middle-end has__no--border">
+                    <div class="classic-finder_bar-stripe thin"></div>
+                    <div class="classic-finder_bar-stripe thin"></div>
+                    <div class="classic-finder_bar-stripe thin"></div>
+                    <div class="classic-finder_bar-stripe thin"></div>
+                    <div class="classic-finder_bar-stripe thin"></div>
+                  </div>
+                  <div class="classic-finder_bar-close has__no--border">
+                    <div class="classic-finder_bar-stripe thin"></div>
+                    <div class="classic-finder_bar-stripe thin"></div>
+                    <div class="classic-finder_bar-stripe thin"></div>
+                    <div class="classic-finder_bar-stripe thin"></div>
+                    <div class="classic-finder_bar-stripe thin"></div>
+                  </div>
+                </div>
+                <div
+                  id="w-node-_45a54e84-53fa-9ae1-8502-5c1da6f8f177-a6f8f14c"
+                  class="classic-finder_bar-stripe"
+                ></div>
+              </div>
+              <div class="classic-finder_info-bar hidden">
+                <div class="classic-finder_bar-sides">
+                  <div></div>
+                </div>
+                <div></div>
+                <div class="classic-finder_bar-sides right">
+                  <div></div>
+                </div>
+              </div>
+              <div class="classic-finder_middle">
+                <div class="classic-finder_content">
+                  <div class="w-richtext">
+                    <h1>Long Short Term Memory </h1>
+
+                    <h3>The backbone behind LLMs and Transformers</h3>
+                    <a href="https://github.com/michaelrzg/LSTM_from_scratch" target="_blank">View Source Code</a>
+                  </div>
+                  <p  ><img  style="height: 500px; align-self: center;" src="https://github.com/user-attachments/assets/3b00d17d-4b4c-4be0-aebb-46a5709a2350" alt="image"></p>
+
+                  <div class="flex-wrap full-width">
+                    <div class="flex-inner">
+                      <div class="w-richtext">
+                  <p>This Long Short Term Memory Model was built from scratch using no prebuilt frameworks or libraries (except math via numpy). Long short-term memory (LSTM) is a type of recurrent neural network (RNN) that can process and retain information over multiple time steps. LSTMs are used in deep learning and artificial intelligence to learn, process, and classify sequential data, such as text, speech, and time series. LSTMs are designed to prevent the neural network output from decaying or exploding as it cycles through feedback loops. This is called the vanishing gradient problem, which traditional RNNs face. LSTMs use gates to capture both short-term and long-term memory, and to regulate the flow of information into and out of the cell. The three gates are the input gate, the output gate, and the forget gate.</p>
+                      </div>
+                      
+                      
+                    </div>
+                    
+                  </div>
+<h1 id="walkthrough">Walkthrough</h1>
+<p>Below is a high level walkthrough of how the code works. For more details, please refer to the documentation in the code.</p>
+<h2 id="phase-1-forward-pass">Phase 1: Forward pass</h2>
+<h3 id="step-1-initilization">Step 1: Initilization</h3>
+<p>First step in a LSTM model is initilizing our short term (h) and long term (C) weights, as well as our input and bias weights to np.zero. In our model, we initilize them both to np.zero values. For the first itteration, the values are randomized, but for each recurring pass, we use the previous output short term and long term weights. We also initilize our grad weights to random values.</p>
+<pre><code class="lang-python"> <span class="hljs-comment"># set up lists to store for short term, long term, and c_tilde (last gate) states at timestamps 0 to t</span>
+<span class="hljs-literal">self</span>.short_term_memory = [np.zeros((<span class="hljs-literal">self</span>.n_neurons,<span class="hljs-number">1</span>)) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(<span class="hljs-literal">self</span>.max_vector+<span class="hljs-number">1</span>)]
+<span class="hljs-literal">self</span>.long_term_memory  = [np.zeros((<span class="hljs-literal">self</span>.n_neurons,<span class="hljs-number">1</span>)) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(<span class="hljs-literal">self</span>.max_vector+<span class="hljs-number">1</span>)]
+<span class="hljs-literal">self</span>.update_gate    = [np.zeros((<span class="hljs-literal">self</span>.n_neurons,<span class="hljs-number">1</span>)) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(<span class="hljs-literal">self</span>.max_vector)]
+
+<span class="hljs-comment"># forget gate values</span>
+<span class="hljs-literal">self</span>.dUf = <span class="hljs-number">0.1</span>*np.<span class="hljs-keyword">random</span>.rand(<span class="hljs-literal">self</span>.n_neurons,<span class="hljs-number">1</span>)
+<span class="hljs-literal">self</span>.dbf = <span class="hljs-number">0.1</span>*np.<span class="hljs-keyword">random</span>.rand(<span class="hljs-literal">self</span>.n_neurons,<span class="hljs-number">1</span>)
+<span class="hljs-literal">self</span>.dwf = <span class="hljs-number">0.1</span>*np.<span class="hljs-keyword">random</span>.rand(<span class="hljs-literal">self</span>.n_neurons,<span class="hljs-literal">self</span>.n_neurons)
+
+<span class="hljs-comment"># input gate values</span>
+<span class="hljs-literal">self</span>.dUi = <span class="hljs-number">0.1</span>*np.<span class="hljs-keyword">random</span>.rand(<span class="hljs-literal">self</span>.n_neurons,<span class="hljs-number">1</span>)
+<span class="hljs-literal">self</span>.dbi = <span class="hljs-number">0.1</span>*np.<span class="hljs-keyword">random</span>.rand(<span class="hljs-literal">self</span>.n_neurons,<span class="hljs-number">1</span>)
+<span class="hljs-literal">self</span>.dwi = <span class="hljs-number">0.1</span>*np.<span class="hljs-keyword">random</span>.rand(<span class="hljs-literal">self</span>.n_neurons,<span class="hljs-literal">self</span>.n_neurons)
+
+<span class="hljs-comment">#output gate values</span>
+<span class="hljs-literal">self</span>.dUo = <span class="hljs-number">0.1</span>*np.<span class="hljs-keyword">random</span>.rand(<span class="hljs-literal">self</span>.n_neurons,<span class="hljs-number">1</span>)
+<span class="hljs-literal">self</span>.dbo = <span class="hljs-number">0.1</span>*np.<span class="hljs-keyword">random</span>.rand(<span class="hljs-literal">self</span>.n_neurons,<span class="hljs-number">1</span>)
+<span class="hljs-literal">self</span>.dwo = <span class="hljs-number">0.1</span>*np.<span class="hljs-keyword">random</span>.rand(<span class="hljs-literal">self</span>.n_neurons,<span class="hljs-literal">self</span>.n_neurons)
+
+<span class="hljs-comment"># update gate</span>
+<span class="hljs-literal">self</span>.dUg = <span class="hljs-number">0.1</span>*np.<span class="hljs-keyword">random</span>.rand(<span class="hljs-literal">self</span>.n_neurons,<span class="hljs-number">1</span>)
+<span class="hljs-literal">self</span>.dbg = <span class="hljs-number">0.1</span>*np.<span class="hljs-keyword">random</span>.rand(<span class="hljs-literal">self</span>.n_neurons,<span class="hljs-number">1</span>)
+<span class="hljs-literal">self</span>.dwg = <span class="hljs-number">0.1</span>*np.<span class="hljs-keyword">random</span>.rand(<span class="hljs-literal">self</span>.n_neurons,<span class="hljs-literal">self</span>.n_neurons)
+</code></pre>
+<h3 id="step-2-forget-gate">Step 2: &#39;forget&#39; Gate</h3>
+<p>Once we have our values initilzed, we can begin our first pass. We start by calculating the &#39;forget gate&#39; which determines what ratio of our previous long term memory we are going to utilize for this pass.</p>
+<p>To determine the forget gates outcome, we find the dot product of our input and our short term memory [t] times our input weights and our short term memory weight for at [t] and add or bias:</p>
+<pre><code class="lang-python"><span class="hljs-comment"># forget gate (determine how much of long term memory we will remember or 'forget')</span>
+<span class="hljs-comment"># outout = input * weight + short term * short term weight + forget gate bias</span>
+outputf = np.dot(<span class="hljs-keyword">self</span>.Uf, x) + np.dot(<span class="hljs-keyword">self</span>.wf,ht) + <span class="hljs-keyword">self</span>.bf
+</code></pre>
+<p>We then utilize sigmoid as an activation function to map the output of the forget gate to a value between 0 and 1, representing the ratio of our long term memory we are keeping. We save this ratio in our ft variable.</p>
+<pre><code class="lang-python"># <span class="hljs-keyword">use</span> our predefined <span class="hljs-keyword">array</span> <span class="hljs-keyword">of</span> sigmoid obje-cts
+Sigmf[t].forward(outputf)
+#grab output <span class="hljs-keyword">for</span> later
+ft = Sigmf[t].output
+</code></pre>
+<p>This value (ft) will be multiplied to our long term memory (C) in the next step.</p>
+<h3 id="step-3-input-gate">Step 3: Input Gate</h3>
+<p>The next step has 2 substeps: (1) calculating what percentage of our new value to add or &#39;remember&#39; in our long term memory and (2) determining the actual value to add.</p>
+<p align = "center">
+<img width="421" alt="Screenshot 2024-10-11 at 8 22 40 PM" src="https://github.com/user-attachments/assets/673de1db-7bed-4b7b-9490-df7419ea2777">
+</p>
+
+<p>We start by calculating same liner combination as our forget gate but with out input gate.</p>
+<pre><code class="lang-python"><span class="hljs-selector-id">#repeat</span> <span class="hljs-keyword">for</span> <span class="hljs-selector-tag">input</span> gate
+outputi = np.dot(self<span class="hljs-selector-class">.Ui</span>, x) + np.dot(self<span class="hljs-selector-class">.wi</span>,ht) + self<span class="hljs-selector-class">.bi</span>
+Sigmi[t].forward(outputi)
+it = Sigmi[t].output
+</code></pre>
+<p>This output value from our sigmoid (it) determines the first substeps value (calculating what percentage of our new value to add or &#39;remember&#39; in our long term memory). The next step requires a different activation function, the TanH, which returns a value between -1 and 1.</p>
+<h3 id="step-4-c_tilde-gate-and-updating-long-term-memory">Step 4: C_Tilde Gate and Updating Long Term Memory</h3>
+<p>We use the third gates, or the c_tilde gate value and multiply it with our input gates value to determine what value to add to our long term memory:</p>
+<pre><code class="lang-python"># <span class="hljs-keyword">finally</span> <span class="hljs-keyword">repeat</span> <span class="hljs-keyword">for</span> c-tilde
+outc_tilde = np.dot(<span class="hljs-keyword">self</span>.Ug,x) + np.dot(<span class="hljs-keyword">self</span>.wg,ht) + <span class="hljs-keyword">self</span>.bg
+tan_1[t].forward(outc_tilde)
+c_tilde = tan_1[t].output
+</code></pre>
+<p>Now we finally combine our values by multiplying our input gate value by our long term, then adding that to the product of our input gate and our ctilde gate:</p>
+<pre><code class="lang-python">ct = np.<span class="hljs-built_in">multiply</span>(ft,ct) + np.<span class="hljs-built_in">multiply</span>(<span class="hljs-keyword">it</span>,c_tilde)
+</code></pre>
+<p>Now out long term memort is updated.</p>
+<h3 id="step-5-updating-shourt-term-memory">Step 5: Updating Shourt Term Memory</h3>
+<p align="center">
+<img width="438" alt="Screenshot 2024-10-11 at 8 31 50 PM" src="https://github.com/user-attachments/assets/cb9449dd-17a0-4af6-8e89-d2e6741f2705">
+</p>
+
+<p>Finally, we update the short term memory to end this iteration and pass the values to the next iteration.
+We update the Short Term Memory by multiplying the outcome of the output gate by the TanH of the long term memory.</p>
+<pre><code class="lang-python"><span class="hljs-attr">ht</span> = np.multiply(tan_2[t].output,ot)
+</code></pre>
+<p>At this point, all thats left for our forward pass is to update our logs.</p>
+<pre><code class="lang-python"># update our short (h) long (c) <span class="hljs-built_in">and</span> ctilde logs
+H[<span class="hljs-built_in">t</span>+<span class="hljs-number">1</span>] = ht
+C[<span class="hljs-built_in">t</span>+<span class="hljs-number">1</span>] = ct
+C_tilde[<span class="hljs-built_in">t</span>] = c_tilde
+
+#update logs of innter values
+F[<span class="hljs-built_in">t</span>] = ft
+O[<span class="hljs-built_in">t</span>] = ot
+I[<span class="hljs-built_in">t</span>] = it
+</code></pre>
+<h3 id="step-6-">Step 6:</h3>
+<p>Since we need to make a decision, we need a set of 2 simple dense layers to give us a decision value. These are simple dense layers with no bells or whistles so I&#39;ll save you the redundant explanation. Heres what the forward pass of the dense layers looks like:</p>
+<pre><code class="lang-python"> <span class="hljs-comment">#forward propogation</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">forward</span><span class="hljs-params">(<span class="hljs-keyword">self</span>,inputs)</span></span>:
+    <span class="hljs-keyword">self</span>.output = np.dot(inputs,<span class="hljs-keyword">self</span>.weights) + <span class="hljs-keyword">self</span>.bias
+    <span class="hljs-keyword">self</span>.inputs = inputs
+</code></pre>
+<h2 id="phase-2-back-propogation">Phase 2: Back Propogation</h2>
+<p>Here comes the tricky part. Since there are dozens of &#39;learnable values&#39; and several sets of weights. Back propogation can be scary. A very simple explaination is we are collecting the gradients of the loss for the different gates, performing the chain rule since they are nested, then multiplying the gradients by our learning rates and subtracting that for each weight set. Heres what the implementation looks like.</p>
+<pre><code class="lang-python">def backward_pass(<span class="hljs-keyword">self</span>,dvalues):
+    # grab our max vector size, short term, <span class="hljs-keyword">and</span> long term memory
+    T = <span class="hljs-keyword">self</span>.max_vector
+    H = <span class="hljs-keyword">self</span>.short_term_memory
+    C = <span class="hljs-keyword">self</span>.long_term_memory
+    # our saved inner gate values
+    O = <span class="hljs-keyword">self</span>.output_gate
+    I = <span class="hljs-keyword">self</span>.input_gate
+    C_Tilde = <span class="hljs-keyword">self</span>.update_gate
+
+    # data
+    data = <span class="hljs-keyword">self</span>.data
+    #activation functions
+
+    sigf = <span class="hljs-keyword">self</span>.Sigf
+    sigi = <span class="hljs-keyword">self</span>.Sigi
+    sigo = <span class="hljs-keyword">self</span>.Sigo
+    tan1 = <span class="hljs-keyword">self</span>.Tan1
+    tan2 = <span class="hljs-keyword">self</span>.Tan2
+
+    #BPTT
+    dht  = dvalues[-<span class="hljs-number">1</span>,:].reshape(<span class="hljs-keyword">self</span>.n_neurons,<span class="hljs-number">1</span>)
+
+    <span class="hljs-keyword">for</span> t <span class="hljs-keyword">in</span> reversed(range(T)):
+        # working backwards
+
+        # get data <span class="hljs-keyword">in</span> form we can work <span class="hljs-keyword">with</span>
+        xt = data[t].reshape(<span class="hljs-number">1</span>,<span class="hljs-number">1</span>)
+        #backwards prop <span class="hljs-keyword">to</span> get dtan2
+        tan2[t].backwards(dht)
+        #store output <span class="hljs-keyword">of</span> backwards call
+        dtanh2 = tan2[t].dinputs
+
+        # dht <span class="hljs-keyword">with</span> respect <span class="hljs-keyword">to</span> tanh
+        dhtdtanh = np.multiply(O[t],dtanh2)
+
+        # dct <span class="hljs-keyword">with</span> respect <span class="hljs-keyword">to</span> dft
+        dctdft =np.multiply(dhtdtanh,C[t-<span class="hljs-number">1</span>])
+
+        #dct <span class="hljs-keyword">with</span> respect <span class="hljs-keyword">to</span> dit
+        dctdit = np.multiply(dhtdtanh,C_Tilde[t])
+
+        #dct <span class="hljs-keyword">with</span> respect <span class="hljs-keyword">to</span> dct_tilde
+        dctdct_tilde = np.multiply(dhtdtanh,I[t])
+
+        #backwards prop <span class="hljs-keyword">to</span> get dtan1
+        tan1[t].backwards(dctdct_tilde)
+        #store output <span class="hljs-keyword">of</span> backwards call
+        dtanh1 = tan1[t].dinputs
+
+        # backwards prop <span class="hljs-keyword">of</span> sig <span class="hljs-keyword">for</span> forget gate
+        sigf[t].backwards(dctdft)
+        dsigmf = sigf[t].dinputs
+
+        # backwards prop <span class="hljs-keyword">of</span> sig <span class="hljs-keyword">for</span> input  gate
+        sigi[t].backwards(dctdit)
+        dsigmi = sigi[t].dinputs
+
+        # backwards prop <span class="hljs-keyword">of</span> sig <span class="hljs-keyword">for</span> output gate
+        sigo[t].backwards(np.multiply(dht,tan2[t].output))
+        dsigmo = sigo[t].dinputs
+
+        # derivative <span class="hljs-keyword">to</span> update
+        dsigmfdUf = np.dot(dsigmf,xt)
+        dsigmfWf = np.dot(dsigmf,H[t-<span class="hljs-number">1</span>].T)
+
+        #update forget gates weights <span class="hljs-keyword">and</span> bias
+        <span class="hljs-keyword">self</span>.dUf += dsigmfdUf
+        <span class="hljs-keyword">self</span>.dwf += dsigmfWf
+        <span class="hljs-keyword">self</span>.dbf += dsigmf
+
+        # derivative <span class="hljs-keyword">to</span> update
+        dsigmidUi = np.dot(dsigmi,xt)
+        dsigmidWi = np.dot(dsigmi,H[t-<span class="hljs-number">1</span>].T)
+
+        # never drink <span class="hljs-keyword">and</span> drive <span class="hljs-keyword">or</span> you will get a..
+        <span class="hljs-keyword">self</span>.dUi +=dsigmidUi
+        <span class="hljs-keyword">self</span>.dwi +=dsigmidWi
+        <span class="hljs-keyword">self</span>.dbi += dsigmi
+
+        # <span class="hljs-keyword">repeat</span> <span class="hljs-keyword">for</span> output gate
+        dsigmodUo = np.dot(dsigmo,xt)
+        dsigmodWo = np.dot(dsigmo,H[t-<span class="hljs-number">1</span>].T)
+
+        #update weights <span class="hljs-keyword">and</span> bias
+        <span class="hljs-keyword">self</span>.dUo +=dsigmodUo
+        <span class="hljs-keyword">self</span>.dwo +=dsigmodWo
+        <span class="hljs-keyword">self</span>.dbo += dsigmo
+
+        #<span class="hljs-keyword">repeat</span> <span class="hljs-keyword">for</span> dtan
+        dtanh1Ug = np.dot(dtanh1,xt)
+        dtanh1Wg = np.dot(dtanh1,H[t-<span class="hljs-number">1</span>].T)
+
+        #update weights <span class="hljs-keyword">and</span> bias
+        <span class="hljs-keyword">self</span>.dUg +=dtanh1Ug
+        <span class="hljs-keyword">self</span>.dwg += dtanh1Wg
+        <span class="hljs-keyword">self</span>.dbg += dtanh1
+
+        #<span class="hljs-keyword">finally</span>, we find derivative <span class="hljs-keyword">of</span> short term memory
+        dht = np.dot(<span class="hljs-keyword">self</span>.wf,dsigmf) + np.dot(<span class="hljs-keyword">self</span>.wi,dsigmi)
+        +np.dot(<span class="hljs-keyword">self</span>.wo,dsigmo) + np.dot(<span class="hljs-keyword">self</span>.wg,dtanh1)
+        +dvalues[t-<span class="hljs-number">1</span>,:].reshape(<span class="hljs-keyword">self</span>.n_neurons,<span class="hljs-number">1</span>)
+    <span class="hljs-keyword">self</span>.short_term_memory = H
+</code></pre>
+
+
+                
+                </div>
+                <div class="classic-finder_scroll-side">
+                  <div class="classic-finder_scroll-arrow">
+                    <img
+                      src="https://assets-global.website-files.com/5bac0565754dd6b3e278aeb2/5c2bae1e3c78e59d81932dc3_arrow.svg"
+                      alt=""
+                      class="finder-icon point--up"
+                    />
+                  </div>
+                  <div class="finder_scrollbar vertical">
+                    <div class="finder__scrollbar--empty"></div>
+                    <div class="finder__scrollbar--handle vertical"></div>
+                    <div class="finder__scrollbar--empty"></div>
+                  </div>
+                  <div class="classic-finder_scroll-arrow">
+                    <img
+                      src="https://assets-global.website-files.com/5bac0565754dd6b3e278aeb2/5c2bae1e3c78e59d81932dc3_arrow.svg"
+                      id="w-node-_45a54e84-53fa-9ae1-8502-5c1da6f8f1b5-a6f8f14c"
+                      alt=""
+                      class="finder-icon"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="classic-finder_scroll-bottom">
+                <div class="classic-finder_scroll-arrow">
+                  <img
+                    src="https://assets-global.website-files.com/5bac0565754dd6b3e278aeb2/5c2bae1e3c78e59d81932dc3_arrow.svg"
+                    id="w-node-_45a54e84-53fa-9ae1-8502-5c1da6f8f1b8-a6f8f14c"
+                    alt=""
+                    class="finder-icon point--left"
+                  />
+                </div>
+                <div class="finder_scrollbar">
+                  <div class="finder__scrollbar--empty"></div>
+                  <div class="finder__scrollbar--handle"></div>
+                  <div class="finder__scrollbar--empty"></div>
+                </div>
+                <div class="classic-finder_scroll-arrow">
+                  <img
+                    src="https://assets-global.website-files.com/5bac0565754dd6b3e278aeb2/5c2bae1e3c78e59d81932dc3_arrow.svg"
+                    id="w-node-_45a54e84-53fa-9ae1-8502-5c1da6f8f1be-a6f8f14c"
+                    alt=""
+                    class="finder-icon point--right"
+                  />
+                </div>
+                <div class="classic-finder_scroll-corner"></div>
+              </div>
+            </div>
+            <div class="finder__shadow">
+              <div class="color-background o75"></div>
+            </div>
+            <div
+              id="w-node-_45a54e84-53fa-9ae1-8502-5c1da6f8f1c2-a6f8f14c"
+              class="color-background"
+            ></div>
+          </div>
+          <div class="window__close--trigger">
+            <div class="color-background o20"></div>
+          </div>
+        </div>
         <div  style="height: 103%;" class="window__position--wrap projects" id="projects">
           <div class="finder__wrap" >
             <div class="finder__close--trigger">
@@ -2385,7 +2741,7 @@ These Machine Learning Projects including Unsupervised Learning via K-means algo
               </div>
               <div class="classic-finder_info-bar">
                 <div class="classic-finder_bar-sides">
-                  <div>11 items</div>
+                  <div>12 items</div>
                 </div>
                 <div></div>
                 <div class="classic-finder_bar-sides right">
@@ -2420,6 +2776,33 @@ These Machine Learning Projects including Unsupervised Learning via K-means algo
                           </div>
                           <div class="icon__title--wrap">
                             <div style="font-size: 12px;">gcps_kafka_event_streaming.exe</div>
+                          </div>
+                        </a>
+                      </div>
+                      <div
+                        role="listitem"
+                        class="combo__wrap is--flexible w-dyn-item"
+                      > <script>
+                        function lstm(){
+                          document.getElementById("projects").style.display = "none";
+                          document.getElementById("lstm").style.display = "flex";
+                          console.log("LSTM");
+                        }
+                      </script>
+                        <a
+                          href="javascript:lstm()"
+                          class="icon__wrap has--width w-inline-block"
+                        >
+                          <div class="finder__icon is--media">
+                            <img
+                              src="retro_src/img/lstm.png"
+                              alt=""
+                              class="icon__graphite"
+                              height="120px"
+                            />
+                          </div>
+                          <div class="icon__title--wrap">
+                            <div style="font-size: 12px;">lstm_from_scratch.exe</div>
                           </div>
                         </a>
                       </div>
