@@ -5602,5 +5602,6 @@ if (
 ) {
   document.getElementById("lstmspacer").style.display = "block";
   document.getElementById("kafkaspacer").style.display = "block";
+  document.getElementById("nlpspacer").style.display = "block";
   console.log("Mobile Device Detected");
 }
