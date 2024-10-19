@@ -56,7 +56,7 @@
 		"nodeunit": "^0.11.3",
 		"prettier": "^3.0.0",
 		"rimraf": "^3.0.0",
-		"rollup": "3.20.7",
+		"rollup": "3.29.5",
 		"rollup-plugin-dts": "5.3.0",
 		"tslib": "^1.10.0",
 		"typescript": "5.0.4"
