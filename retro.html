@@ -982,7 +982,7 @@
             <div class="color-background o20"></div>
           </div>
         </div>
-        <div class="window__position--wrap read--me" id = "readme" style="display: flex; height: 104%;">
+        <div class="window__position--wrap read--me" id = "readme" style="display: flex; height: 104%; overflow: visible;">
           <div class="finder__wrap">
             <div class="finder__close--trigger">
               <img src="/retro_src/svg/x-symbol.svg" alt="">
@@ -1175,7 +1175,11 @@ UNIVERSITY, ATLANTA GA. (3.81 GPA) CONCENTRATION IN ARTIFICIAL INTELLIGENCE
         </div>
         
         
-        <div class="window__position--wrap read--me kafka" id="kafka" style="display: none; height: 101%;">
+        <div class="window__position--wrap read--me kafka" id="kafka" style="display: none; height: 101%; ">
+          <div class="w-richtext" id = "kafkaspacer" style="display: none;">
+                    <br><br><br><br><br><br><br><br><br><br><br><br>
+                    <br>
+                  </div>
           <div class="finder__wrap">
             <div class="finder__close--trigger">
               <img src="/retro_src/svg/x-symbol.svg" alt="">
@@ -1350,7 +1354,7 @@ significantly to operational efficiency.                        </p>
           </div>
         </div>
            
-        <div class="window__position--wrap read--me nlp" id="nlp" style="display: none; height: 101%;">
+        <div class="window__position--wrap read--me nlp" id="nlp" style="display: none; height: 101%; overflow: hidden;">
           <div class="finder__wrap">
             <div class="finder__close--trigger">
               <img src="/retro_src/svg/x-symbol.svg" alt="">
@@ -2327,7 +2331,31 @@ These Machine Learning Projects including Unsupervised Learning via K-means algo
             <div class="color-background o20"></div>
           </div>
         </div>
-         <div class="window__position--wrap read--me lstm" id="lstm" style="display: none; height: 101%;">
+         <div class="window__position--wrap read--me" id="lstm" style="display: none; height: 101%; ;">
+                  <div class="w-richtext" id = "lstmspacer" style="display: none;">
+                    <br><br><br><br><br><br><br><br><br><br><br><br>
+                    <br><br><br><br><br><br><br><br><br><br><br><br>
+                    <br><br><br><br><br><br><br><br><br><br><br><br>
+                    <br><br><br><br><br><br><br><br><br><br><br><br>
+                     <br><br><br><br><br><br><br><br><br><br><br><br>
+                    <br><br><br><br><br><br><br><br><br><br><br><br>
+                    <br><br><br><br><br><br><br><br><br><br><br><br>
+                    <br><br><br><br><br><br><br><br><br><br><br><br>
+                    <br><br><br><br><br><br><br><br><br><br><br><br>
+                    <br><br><br><br><br><br><br><br><br><br><br><br>
+                    <br><br><br><br><br><br>
+                    <br><br><br><br><br><br><br><br><br><br><br><br>
+                    <br><br><br><br><br><br><br><br><br><br><br><br>
+                    <br><br><br><br><br><br><br><br><br><br><br><br>
+                    <br><br><br><br><br><br><br><br><br><br><br><br>
+                     <br><br><br><br><br><br><br><br><br><br><br><br>
+                    <br><br><br><br><br><br><br><br><br><br><br><br>
+                    <br><br><br><br><br><br><br><br><br><br><br><br>
+                    <br><br><br><br><br><br><br><br><br><br><br><br>
+                    <br><br><br><br><br><br><br><br><br>
+         
+                  
+                  </div>
           <div class="finder__wrap">
             <div class="finder__close--trigger">
               <img src="/retro_src/svg/x-symbol.svg" alt="">
@@ -2465,7 +2493,7 @@ ft = Sigmf[t].output
 <h3 id="step-3-input-gate">Step 3: Input Gate</h3>
 <p>The next step has 2 substeps: (1) calculating what percentage of our new value to add or &#39;remember&#39; in our long term memory and (2) determining the actual value to add.</p>
 <p align = "center">
-<img width="421" alt="Screenshot 2024-10-11 at 8 22 40 PM" src="https://github.com/user-attachments/assets/673de1db-7bed-4b7b-9490-df7419ea2777">
+<img  alt="Screenshot 2024-10-11 at 8 22 40 PM" src="https://github.com/user-attachments/assets/673de1db-7bed-4b7b-9490-df7419ea2777">
 </p>
 
 <p>We start by calculating same liner combination as our forget gate but with out input gate.</p>
@@ -2488,7 +2516,7 @@ c_tilde = tan_1[t].output
 <p>Now out long term memort is updated.</p>
 <h3 id="step-5-updating-shourt-term-memory">Step 5: Updating Shourt Term Memory</h3>
 <p align="center">
-<img width="438" alt="Screenshot 2024-10-11 at 8 31 50 PM" src="https://github.com/user-attachments/assets/cb9449dd-17a0-4af6-8e89-d2e6741f2705">
+<img alt="Screenshot 2024-10-11 at 8 31 50 PM" src="https://github.com/user-attachments/assets/cb9449dd-17a0-4af6-8e89-d2e6741f2705">
 </p>
 
 <p>Finally, we update the short term memory to end this iteration and pass the values to the next iteration.
@@ -2565,53 +2593,8 @@ I[<span class="hljs-built_in">t</span>] = it
         #store output <span class="hljs-keyword">of</span> backwards call
         dtanh1 = tan1[t].dinputs
 
-        # backwards prop <span class="hljs-keyword">of</span> sig <span class="hljs-keyword">for</span> forget gate
-        sigf[t].backwards(dctdft)
-        dsigmf = sigf[t].dinputs
 
-        # backwards prop <span class="hljs-keyword">of</span> sig <span class="hljs-keyword">for</span> input  gate
-        sigi[t].backwards(dctdit)
-        dsigmi = sigi[t].dinputs
-
-        # backwards prop <span class="hljs-keyword">of</span> sig <span class="hljs-keyword">for</span> output gate
-        sigo[t].backwards(np.multiply(dht,tan2[t].output))
-        dsigmo = sigo[t].dinputs
-
-        # derivative <span class="hljs-keyword">to</span> update
-        dsigmfdUf = np.dot(dsigmf,xt)
-        dsigmfWf = np.dot(dsigmf,H[t-<span class="hljs-number">1</span>].T)
-
-        #update forget gates weights <span class="hljs-keyword">and</span> bias
-        <span class="hljs-keyword">self</span>.dUf += dsigmfdUf
-        <span class="hljs-keyword">self</span>.dwf += dsigmfWf
-        <span class="hljs-keyword">self</span>.dbf += dsigmf
-
-        # derivative <span class="hljs-keyword">to</span> update
-        dsigmidUi = np.dot(dsigmi,xt)
-        dsigmidWi = np.dot(dsigmi,H[t-<span class="hljs-number">1</span>].T)
-
-        # never drink <span class="hljs-keyword">and</span> drive <span class="hljs-keyword">or</span> you will get a..
-        <span class="hljs-keyword">self</span>.dUi +=dsigmidUi
-        <span class="hljs-keyword">self</span>.dwi +=dsigmidWi
-        <span class="hljs-keyword">self</span>.dbi += dsigmi
-
-        # <span class="hljs-keyword">repeat</span> <span class="hljs-keyword">for</span> output gate
-        dsigmodUo = np.dot(dsigmo,xt)
-        dsigmodWo = np.dot(dsigmo,H[t-<span class="hljs-number">1</span>].T)
-
-        #update weights <span class="hljs-keyword">and</span> bias
-        <span class="hljs-keyword">self</span>.dUo +=dsigmodUo
-        <span class="hljs-keyword">self</span>.dwo +=dsigmodWo
-        <span class="hljs-keyword">self</span>.dbo += dsigmo
-
-        #<span class="hljs-keyword">repeat</span> <span class="hljs-keyword">for</span> dtan
-        dtanh1Ug = np.dot(dtanh1,xt)
-        dtanh1Wg = np.dot(dtanh1,H[t-<span class="hljs-number">1</span>].T)
-
-        #update weights <span class="hljs-keyword">and</span> bias
-        <span class="hljs-keyword">self</span>.dUg +=dtanh1Ug
-        <span class="hljs-keyword">self</span>.dwg += dtanh1Wg
-        <span class="hljs-keyword">self</span>.dbg += dtanh1
+        ...
 
         #<span class="hljs-keyword">finally</span>, we find derivative <span class="hljs-keyword">of</span> short term memory
         dht = np.dot(<span class="hljs-keyword">self</span>.wf,dsigmf) + np.dot(<span class="hljs-keyword">self</span>.wi,dsigmi)
