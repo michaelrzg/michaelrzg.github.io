@@ -5605,3 +5605,44 @@ if (
   document.getElementById("nlpspacer").style.display = "block";
   console.log("Mobile Device Detected");
 }
+
+document.getElementById("close").addEventListener("click", async () => {
+  await new Promise((r) => setTimeout(r, 250));
+  document.getElementById("projects").style.display = "flex";
+  console.log("Ran");
+});
+document.getElementById("nlpclose").addEventListener("click", async () => {
+  await new Promise((r) => setTimeout(r, 250));
+  document.getElementById("projects").style.display = "flex";
+  console.log("Ran");
+});
+document.getElementById("mlclose").addEventListener("click", async () => {
+  await new Promise((r) => setTimeout(r, 250));
+  document.getElementById("projects").style.display = "flex";
+  console.log("Ran");
+});
+document.getElementById("mvclose").addEventListener("click", async () => {
+  await new Promise((r) => setTimeout(r, 250));
+  document.getElementById("projects").style.display = "flex";
+  console.log("Ran");
+});
+document.getElementById("nnclose").addEventListener("click", async () => {
+  await new Promise((r) => setTimeout(r, 250));
+  document.getElementById("projects").style.display = "flex";
+  console.log("Ran");
+});
+document.getElementById("bayesclose").addEventListener("click", async () => {
+  await new Promise((r) => setTimeout(r, 250));
+  document.getElementById("projects").style.display = "flex";
+  console.log("Ran");
+});
+document.getElementById("tcpclose").addEventListener("click", async () => {
+  await new Promise((r) => setTimeout(r, 250));
+  document.getElementById("projects").style.display = "flex";
+  console.log("Ran");
+});
+document.getElementById("lstmclose").addEventListener("click", async () => {
+  await new Promise((r) => setTimeout(r, 250));
+  document.getElementById("projects").style.display = "flex";
+  console.log("Ran");
+});
